@@ -34,7 +34,7 @@ class SpringDocletTest {
 
   def getClassPath() {
     def loaderUrls = this.class.classLoader.URLs
-    def files = loaderUrls.collect { new URI(it.toString()).path - '/'}
+    def files = loaderUrls.collect { new File(URLDecoder.decode(it.path, "utf-8")).path }
     return files.join(File.pathSeparator)
   }
 

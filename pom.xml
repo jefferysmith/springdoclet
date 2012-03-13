@@ -38,7 +38,7 @@
       <groupId>com.sun</groupId>
       <artifactId>tools</artifactId>
       <version>${tools.version}</version>
-      <systemPath>${java.home}/../lib/tools.jar</systemPath>
+      <systemPath>${tools.jar}</systemPath>
       <scope>system</scope>
     </dependency>
 
@@ -122,4 +122,29 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>win</id>
+      <activation>
+        <os>
+          <family>Windows</family>
+        </os>
+      </activation>
+      <properties>
+        <tools.jar>${java.home}/../lib/tools.jar</tools.jar>
+      </properties>
+    </profile>
+    <profile>
+      <id>osx</id>
+      <activation>
+        <os>
+          <family>mac</family>
+        </os>
+      </activation>
+      <properties>
+        <tools.jar>${java.home}/../Classes/classes.jar</tools.jar>
+      </properties>
+    </profile>
+  </profiles>
 </project>
